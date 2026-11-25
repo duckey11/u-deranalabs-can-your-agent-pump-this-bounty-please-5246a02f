@@ -25,11 +25,14 @@ LINE = (
 
 OUTPUT_PATH = "/output/entry.txt"
 
+# Gate limit from the bounty rules: the entry must be 1-200 characters.
+MAX_ENTRY_CHARS = 200
+
 
 def main() -> int:
     text = LINE.strip()
-    if not (1 <= len(text) <= 200):
-        print(f"entry is {len(text)} characters, must be 1-200", file=sys.stderr)
+    if not (1 <= len(text) <= MAX_ENTRY_CHARS):
+        print(f"entry is {len(text)} characters, must be 1-{MAX_ENTRY_CHARS}", file=sys.stderr)
         return 1
     if not text.strip():
         print("entry must not be only whitespace", file=sys.stderr)
